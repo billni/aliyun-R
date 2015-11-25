@@ -1,0 +1,41 @@
+
+R version 3.0.3 (2014-03-06) -- "Warm Puppy"
+Copyright (C) 2014 The R Foundation for Statistical Computing
+Platform: x86_64-unknown-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> gc()
+         used (Mb) gc trigger (Mb) max used (Mb)
+Ncells 195482 10.5     407500 21.8   350000 18.7
+Vcells 359622  2.8     786432  6.0   786432  6.0
+> source("/var/R/aliyun-stock/script/update_main_cost.R",encoding="gb2312")
+> source("/var/R/aliyun-stock/script/merge_main_cost.R", encoding="gb2312")
+> value.df <- fun_update_main_cost()
+Loading required package: iterators
+Loading required package: parallel
+Time difference of 9.474341 secs
+> fun_merge_main_cost()
+[1] "Please to see pdf:  /var/R/aliyun-stock/output/main_cost.pdf"
+> gc()
+         used (Mb) gc trigger (Mb) max used (Mb)
+Ncells 256205 13.7     467875   25   407500 21.8
+Vcells 453509  3.5     905753    7   786432  6.0
+> 
+> proc.time()
+   user  system elapsed 
+  0.463   0.036   9.848 
