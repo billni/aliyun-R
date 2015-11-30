@@ -24,9 +24,9 @@ fun_merge_main_cost <- function() {
     for(i in 1:loopnum) {
       target <- stock.main.cost[which(stock.main.cost$code==stockcode[i]),]
       plot(target[,4], type="b", xlab=target[1,2], ylab="Price", xlim=c(1,nrow(target)), xaxt="n")
-      text(x=target[,4], labels=target[,3], pos=2, col="red", cex = 0.5)
+      #text(x=target[,4], labels=target[,3], pos=2, col="red", cex = 0.5)
       text(x=target[,4], labels=target[,4], pos=3, col="blue",  cex=0.7)      
-      title(main="The Trend of Banker Control Cost")
+      title(main="The Trend of Banker Control Cost",sub=paste(min(target[,3]), "to", max(target[,3])))
     }
     
     par(opar)
