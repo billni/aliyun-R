@@ -10,7 +10,7 @@ fun_merge_main_cost <- function() {
       file.data <- read.table(filename, header=T, blank.lines.skip = TRUE, stringsAsFactors=F,  colClasses=c("character","character","character"))  
       stock.main.cost <- rbind(stock.main.cost, file.data[,c(1,2,4,6)])
     }
-    
+    stock.main.cost <- unique(stock.main.cost[,1:4])
     ##### remove first row which initialized by data.frame
     stock.main.cost <- stock.main.cost[-1,] 
     
