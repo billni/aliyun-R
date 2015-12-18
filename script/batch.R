@@ -1,6 +1,6 @@
 gc()
-source("/var/R/aliyun-stock/script/update_main_cost.R",encoding="gb2312")
-source("/var/R/aliyun-stock/script/merge_main_cost.R", encoding="gb2312")
+source("/var/R/aliyun-stock/script/update_main_cost.R")
+source("/var/R/aliyun-stock/script/merge_main_cost.R")
 value.df <- fun_update_main_cost()
 fun_merge_main_cost()
 gc()

@@ -13,6 +13,7 @@ fun_merge_main_cost <- function() {
     stock.main.cost <- unique(stock.main.cost[,1:4])
     ##### remove first row which initialized by data.frame
     stock.main.cost <- stock.main.cost[-1,] 
+    write.table(stock.main.cost, "/var/R/aliyun-stock/mergeddata/data.txt", row.names = F)
     
     path <- paste(dir, "/aliyun-stock/output/main_cost.pdf", sep="")
     pdf(path)    
