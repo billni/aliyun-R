@@ -2,21 +2,13 @@
 ### Merge all files
 #############
 fun_merge_main_cost <- function() {
-    dir <- "/var/R"
-    path <- paste(dir, "/aliyun-stock/rawdata/", sep="")
-    stock.main.cost <- data.frame(code='000000', name='xxxxxx', control_date='0000-00-00',main_cost_value=0,  stringsAsFactors=F)
-    files <- dir(path, full.names=T)
-    for(filename in files) {
-      file.data <- read.table(filename, header=T, blank.lines.skip = TRUE, stringsAsFactors=F,  colClasses=c("character","character","character"))  
-      stock.main.cost <- rbind(stock.main.cost, file.data[,c(1,2,4,6)])
-    }
-    stock.main.cost <- unique(stock.main.cost[,1:4])
-    ##### remove first row which initialized by data.frame
-    stock.main.cost <- stock.main.cost[-1,] 
-    write.table(stock.main.cost, "/var/R/aliyun-stock/mergeddata/data.txt", row.names = F)
     
-    path <- paste(dir, "/aliyun-stock/output/main_cost.pdf", sep="")
-    pdf(path)    
+    #### read data to plot ####
+    stock.main.cost <- read.table("/var/R/aliyun-stock/mergeddata/data.txt", header=T, blank.lines.skip = TRUE, stringsAsFactors=F,  colClasses=c("character","character","character"))      
+    
+    #### specify pdf file ####
+    pdf("/var/R/aliyun-stock/output/main_cost.pdf")    
+    
     opar <- par(no.readonly=T)
     par(lty=2, pch=19, mfrow=c(1,1))
     
@@ -34,5 +26,5 @@ fun_merge_main_cost <- function() {
     par(opar)
     dev.list()
     dev.off(dev.cur())
-    print(paste("Please to see pdf: ", path))
+    print("Please to see main_cost.pdf")
 }
