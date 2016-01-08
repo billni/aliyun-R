@@ -1,0 +1,4 @@
+"code" "name" "market" "control_date" "control_status" "main_cost_value"
+"002505" "" "002505.sz" NA "" NA
+"600036" "" "600036.sh" NA "" NA
+"601398" "工商银行" "601398.sh" "2015-12-29" "微弱控盘" 4.25

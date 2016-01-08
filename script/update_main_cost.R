@@ -78,5 +78,16 @@ fun_update_main_cost <- function(){
   path <- paste(dir, "/aliyun-stock/rawdata/", sep="")
   filename <- paste(path, Sys.Date(), ".txt", sep="")
   write.table(stock.main.cost, filename, row.names = F)
+  
+  ##### merge new data to all ####
+  merge.data <- read.table("/var/R/aliyun-stock/mergeddata/data.txt", header=T, blank.lines.skip = TRUE, stringsAsFactors=F,  colClasses=c("character","character","character"))  
+  stock.main.cost <- rbind(stock.main.cost[-1,], merge.data)
+  
+  
+  ##### remove first row which initialized by data.frame
+  stock.main.cost <- unique(stock.main.cost[,1:4])
+  stock.main.cost <- stock.main.cost[-1,] 
+  write.table(stock.main.cost, "/var/R/aliyun-stock/mergeddata/data.txt", row.names = F)
+  
   return(stock.main.cost)
 }
