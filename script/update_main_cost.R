@@ -81,13 +81,26 @@ fun_update_main_cost <- function(){
   
   ##### merge new data to all ####
   merge.data <- read.table("/var/R/aliyun-stock/mergeddata/data.txt", header=T, blank.lines.skip = TRUE, stringsAsFactors=F,  colClasses=c("character","character","character"))  
-  stock.main.cost <- rbind(stock.main.cost[-1,], merge.data)
+  stock.main.cost <- rbind(merge.data, stock.main.cost[-1,c(1,2,4,6)])
   
-  
+  stock.main.cost <- na.omit(stock.main.cost)
   ##### remove first row which initialized by data.frame
   stock.main.cost <- unique(stock.main.cost[,1:4])
-  stock.main.cost <- stock.main.cost[-1,] 
-  write.table(stock.main.cost, "/var/R/aliyun-stock/mergeddata/data.txt", row.names = F)
   
+  stock.main.cost <- stock.main.cost[-1,]
+  write.table(stock.main.cost, "/var/R/aliyun-stock/mergeddata/data.txt", row.names = F)
   return(stock.main.cost)
+  
+ ##### 修正程序 ####
+ # stock.main.cost <- data.frame(code='000000', name='xxxxxx', control_date='0000-00-00',main_cost_value=0,  stringsAsFactors=F)
+ #  files <- dir("/var/R/aliyun-stock/rawdata", full.names=T)
+ # for(filename in files) {
+ #    file.data <- read.table(filename, header=T, blank.lines.skip = TRUE, stringsAsFactors=F,  colClasses=c("character","character","character"))  
+ #   stock.main.cost <- rbind(stock.main.cost, file.data[,c(1,2,4,6)])
+ #  }
+ #  stock.main.cost <- unique(stock.main.cost[,1:4])
+ #  ##### remove first row which initialized by data.frame
+ # stock.main.cost <- stock.main.cost[-1,] 
+ # write.table(stock.main.cost, "/var/R/aliyun-stock/mergeddata/data.txt", row.names = F)
+
 }
