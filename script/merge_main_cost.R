@@ -15,12 +15,11 @@ fun_merge_main_cost <- function() {
     stockcode <- levels(as.factor(stock.main.cost[,1]))
     loopnum <-  length(stockcode)
     for(i in 1:loopnum) {
-      pdf.options(family='GB1')
       target <- stock.main.cost[which(stock.main.cost$code==stockcode[i]),]
       plot(target[,4], type="b", xlab=paste(min(target[,3]), "to", max(target[,3])), ylab="Price", xlim=c(1,nrow(target)), xaxt="n")
       #text(x=target[,4], labels=target[,3], pos=2, col="red", cex = 0.5)
       text(x=target[,4], labels=target[,4], pos=3, col="blue",  cex=0.7)      
-      title(main=target[1,2])
+      title(main=target[1,c(1,2)])
     }
     
     par(opar)

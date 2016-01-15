@@ -2,7 +2,7 @@ fun_update_main_cost <- function(){
   gc()
   starttime <- Sys.time()
   dir <- "/var/R"
-  file <- paste(dir, "/aliyun-stock/res/stocklist.txt", sep = "")
+  file <- paste(dir, "/aliyun-stock/res/allstock.txt", sep = "")
   ###########################################
   stocklist <-
     read.csv(
